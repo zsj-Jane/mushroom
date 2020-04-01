@@ -1,0 +1,13 @@
+<!--pages/phone-login/phone-login.wxml-->
+<view class="phone-login-container">
+	<text class="phone-validate">手机号验证</text>
+	<text class="subtitle">用于即时获取课程最新信息</text>
+	<view class="content">
+		<input class="phone" data-name="phone" placeholder="请输入您的手机号" type="number"></input>
+    <view class="get_vcode">获取验证码</view>
+		<input class="vcode" data-name="vcode" placeholder="请输入验证码" type="number"></input>
+	</view>
+	<button class="phone-login">
+		<image class="phone-login-img" src="/assets/images/phone_login@2x.png"></image>
+	</button>
+</view>

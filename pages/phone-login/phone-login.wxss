@@ -1,0 +1,83 @@
+/* pages/phone-login/phone-login.wxss */
+.phone-login-container {
+  padding: 20rpx 68rpx;
+}
+
+.phone-login-container .phone-validate {
+  margin-top: 150rpx;
+  font-size: 40px;
+  color: #393939;
+}
+
+.phone-login-container .subtitle {
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  color: #a8a8a8;
+  display: inline-block;
+}
+
+.phone-login-container .content {
+  margin-top: 150rpx;
+  height: 250rpx;
+  position: relative;
+}
+
+.phone-login-container .content .phone {
+  height: 100rpx;
+  font-size: 15px;
+  position: relative;
+}
+
+.phone-login-container .content .phone::after {
+  content: '';
+  position: absolute;
+  background-color: #e9e9e9;
+  left: 0;
+  right: 0;
+  height: 1px;
+  bottom: 1px;
+}
+.phone-login-container .content .get_vcode{
+  position: absolute;
+  right: 0;
+  top: 20rpx;
+  width: 164rpx;
+  height: 56rpx;
+  text-align: center;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+  border: 1px solid rgba(168,168,168,1);
+  border-radius: 40rpx;
+  z-index: 2;
+}
+.phone-login-container .content .vcode {
+  margin-top: 60rpx;
+  height: 100rpx;
+  font-size: 15px;
+  position: relative;
+}
+
+.phone-login-container .content .vcode::after {
+  content: '';
+  position: absolute;
+  background-color: #e9e9e9;
+  left: 0;
+  right: 0;
+  height: 1px;
+  bottom: 1px;
+}
+
+.phone-login-container .phone-login {
+  margin-top: 200rpx;
+  width: 568rpx;
+  height: 98rpx;
+  padding: 0;
+  border: none;
+}
+
+.phone-login-container .phone-login-img {
+  width: 568rpx;
+  height: 98rpx;
+}
