@@ -1,4 +1,6 @@
 // pages/home/home.js
+// 导入封装的请求方法
+import axios from '../../utils/axios';
 Page({
 
   /**
@@ -14,69 +16,19 @@ Page({
    */
   onLoad: function (options) {
     // 发送请求，获取轮播图数据
-    wx.request({
-      url: 'http://localhost:3000/api/home/swipers',
-      header: {
-        Authorization: wx.getStorageSync('token')
-      },
-      success: res => {
-        console.log(res);
-        if (res.data.status === 0) {
-          // 保存轮播图数据
-          this.setData({
-            swipers: res.data.message
-          });
-        }
+    this.getSwiperData();
+  },
+  // 获取轮播图数据
+  getSwiperData() {
+    // 发请求，获取轮播图数据
+    axios({ url: 'home/swipers' }).then(res => {
+      // 当请求成功后
+      if (res.data.status === 0) {
+        // 保存轮播图数据
+        this.setData({
+          swipers: res.data.message
+        });
       }
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    });
   }
 })

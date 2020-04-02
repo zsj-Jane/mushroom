@@ -1,31 +1,33 @@
 // pages/phone-login/phone-login.js
+// 导入封装的请求方法
+import axios from '../../utils/axios';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    phone:'17704051019',
-    tipName:'获取验证码',
+    phone: '17704051019',
+    tipName: '获取验证码',
     // 倒计时总秒数
-    count:10,
+    count: 10,
     // 是否正在倒计时
-    isCountDown:false,
+    isCountDown: false,
     // 定时器id
-    timerId:null,
+    timerId: null,
     // 验证码
-    vcode:''
+    vcode: ''
   },
   // 修改值（手机号、验证码）（参数用的解构赋值）
-  changeValue({detail:{value},target:{dataset:{name}}}){
+  changeValue({ detail: { value }, target: { dataset: { name } } }) {
     // 修改data中name对应值的属性的值
     this.setData({
       // 属性名表达式 [name]，可以拿到name里面的值，当属性名是动态变化时这么写
-      [name]:value
+      [name]: value
     })
   },
   // 获取验证码
-  getVcode(){
+  getVcode() {
     // 拿到数据中的手机号
     const phone = this.data.phone;
     // 验证手机号的正则表达式
@@ -35,7 +37,7 @@ Page({
       // 错误提示
       wx.showToast({
         title: '手机号不合法',
-        icon:'none'
+        icon: 'none'
       });
       // 返回
       return;
@@ -45,20 +47,20 @@ Page({
     if (this.data.isCountDown) return
     // 修改跟倒计时相关的模型数据
     this.setData({
-      tipName:this.data.count,
-      isCountDown:true //开始倒计时
+      tipName: this.data.count,
+      isCountDown: true //开始倒计时
     });
     // 开启定时器，每隔1s，count--
     this.data.timerId = setInterval(() => {
       // 当count值<=1时
-      if (this.data.count<=1) {
+      if (this.data.count <= 1) {
         // 清除计时器
         clearInterval(this.data.timerId);
         // 重置模型数据
-        this.data.count=10;
+        this.data.count = 10;
         this.setData({
-          tipName:'获取验证码',
-          isCountDown:false
+          tipName: '获取验证码',
+          isCountDown: false
         });
         // 返回
         return;
@@ -67,53 +69,51 @@ Page({
       this.data.count--;
       // 改变tipName的值，实时看到效果
       this.setData({
-        tipName:this.data.count
+        tipName: this.data.count
       })
     }, 1000);
 
     // 发请求，获取验证码
-    wx.request({
-      url: 'http://localhost:3000/api/user/vcode',
-      data:{
-        phone:this.data.phone
-      },
-      success:res=>{
-        // 当成功发送验证码后，消息提示
-        if (res.data.status===0) {
-          wx.showToast({
-            title: res.data.message+',验证码为：'+res.data.vcode,
-            icon:'none'
-          });
-        }
+    axios({
+      url: 'user/vcode',
+      data: {
+        phone: this.data.phone
       }
-    });
+    }).then(res => {
+      // 当成功发送验证码后，消息提示
+      if (res.data.status === 0) {
+        wx.showToast({
+          title: res.data.message + ',验证码为：' + res.data.vcode,
+          icon: 'none'
+        });
+      }
+    })
   },
   // 手机号登录
-  phoneLogin(){
+  phoneLogin() {
     // 发送网络请求，手机号登录
-    wx.request({
-      url: 'http://localhost:3000/api/user/login',
-      method:'POST',
-      data:{
-        phone:this.data.phone,
-        vcode:this.data.vcode
-      },
-      success:res=>{
-        // 消息提示
-        wx.showToast({
-          title: res.data.message,
-          icon:'none',
-          duration:1000
+    axios({
+      url: 'user/login',
+      method: 'POST',
+      data: {
+        phone: this.data.phone,
+        vcode: this.data.vcode
+      }
+    }).then(res => {
+      // 消息提示
+      wx.showToast({
+        title: res.data.message,
+        icon: 'none',
+        duration: 1000
+      });
+      // 当登录成功后
+      if (res.data.status === 0) {
+        // 本地保存token
+        wx.setStorageSync('token', res.data.token);
+        // 跳转到首页
+        wx.reLaunch({
+          url: '/pages/home/home',
         });
-        // 当登录成功后
-        if (res.data.status===0) {
-          // 本地保存token
-          wx.setStorageSync('token', res.data.token);
-          // 跳转到首页
-          wx.reLaunch({
-            url: '/pages/home/home',
-          });
-        }
       }
     })
   }
