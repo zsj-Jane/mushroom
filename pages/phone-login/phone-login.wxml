@@ -3,9 +3,15 @@
 	<text class="phone-validate">手机号验证</text>
 	<text class="subtitle">用于即时获取课程最新信息</text>
 	<view class="content">
-		<input class="phone" data-name="phone" placeholder="请输入您的手机号" type="number"></input>
-    <view class="get_vcode">获取验证码</view>
-		<input class="vcode" data-name="vcode" placeholder="请输入验证码" type="number"></input>
+	<!-- 
+		小程序中 没有双向数据绑定，只有单向数据绑定：模型->视图
+		小程序中 双向数据绑定 的实现：
+					模型->视图：给input的value值绑定模型数据
+					视图->模型：监听input的值的改变事件 bindinput
+	 -->
+		<input class="phone" bindinput="changeValue" value="{{phone}}" placeholder="请输入您的手机号" type="number"></input>
+    <view class="get_vcode" bindtap="getVcode" style="color:{{isCountDown?'#a8a8a8':'#333'}}">{{tipName}}</view>
+		<input class="vcode"  placeholder="请输入验证码" type="number"></input>
 	</view>
 	<button class="phone-login">
 		<image class="phone-login-img" src="/assets/images/phone_login@2x.png"></image>
