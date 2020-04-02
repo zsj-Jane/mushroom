@@ -5,14 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    // 轮播图数据
+    swipers: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 发送请求，获取轮播图数据
+    wx.request({
+      url: 'http://localhost:3000/api/home/swipers',
+      header: {
+        Authorization: wx.getStorageSync('token')
+      },
+      success: res => {
+        console.log(res);
+        if (res.data.status === 0) {
+          // 保存轮播图数据
+          this.setData({
+            swipers: res.data.message
+          });
+        }
+      }
+    })
   },
 
   /**
