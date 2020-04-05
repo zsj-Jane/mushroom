@@ -5,7 +5,8 @@
     "pages/home/home",
     "pages/course/course",
     "pages/study/study",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

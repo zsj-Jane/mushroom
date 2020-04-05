@@ -60,8 +60,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "首页",
-					"pathName": "pages/home/home",
+					"name": "搜索页面",
+					"pathName": "pages/search/search",
 					"query": "",
 					"scene": null
 				}
