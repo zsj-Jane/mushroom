@@ -4,6 +4,7 @@ Page({
   /**
    * 页面的初始数据
    */
+  /* 自己写的
   data: {
     // 输入框是否聚焦
     isFocus: false,
@@ -12,8 +13,7 @@ Page({
   },
   // 双向绑定数据：输入框值改变
   changeValue(e) {
-    console.log(e);
-
+    // 保存输入框的值
     this.setData({
       keyword: e.detail.value
     })
@@ -27,62 +27,38 @@ Page({
   // 取消按钮的点击事件
   cancel() {
     this.setData({
-      isFocus: false
+      isFocus: false,
+      keyword: ''
     })
+  },*/
+  // 导入weui-wxss中searchbar的js文件内容
+  data: {
+    inputShowed: false,
+    inputVal: ""
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  clearInput: function () {
+    this.setData({
+      inputVal: ""
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+  // 输入框搜索事件
+  search() {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
