@@ -1,6 +1,6 @@
 // pages/phone-login/phone-login.js
 // 导入封装的请求方法
-import axios from '../../utils/axios';
+import request from '../../utils/request';
 Page({
 
   /**
@@ -74,7 +74,7 @@ Page({
     }, 1000);
 
     // 发请求，获取验证码
-    axios({
+    request({
       url: 'user/vcode',
       data: {
         phone: this.data.phone
@@ -92,7 +92,7 @@ Page({
   // 手机号登录
   phoneLogin() {
     // 发送网络请求，手机号登录
-    axios({
+    request({
       url: 'user/login',
       method: 'POST',
       data: {

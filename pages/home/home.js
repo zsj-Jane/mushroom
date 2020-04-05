@@ -1,6 +1,6 @@
 // pages/home/home.js
 // 导入封装的请求方法
-import axios from '../../utils/axios';
+import request from '../../utils/request';
 Page({
 
   /**
@@ -8,7 +8,11 @@ Page({
    */
   data: {
     // 轮播图数据
-    swipers: null
+    swipers: null,
+    // 课程数据
+    courses: null,
+    // 热门视频数据
+    videos: null
   },
 
   /**
@@ -17,11 +21,15 @@ Page({
   onLoad: function (options) {
     // 发送请求，获取轮播图数据
     this.getSwiperData();
+    // 发送请求，获取课程数据
+    this.getCourseData();
+    // 发送请求，获取热门视频数据
+    this.getVideoData();
   },
   // 获取轮播图数据
   getSwiperData() {
     // 发请求，获取轮播图数据
-    axios({ url: 'home/swipers' }).then(res => {
+    request({ url: 'home/swipers' }).then(res => {
       // 当请求成功后
       if (res.data.status === 0) {
         // 保存轮播图数据
@@ -30,5 +38,29 @@ Page({
         });
       }
     });
+  },
+  // 获取课程数据
+  async getCourseData() {
+    // 发送请求，获取课程数据
+    let res = await request({ url: 'home/course' });
+    // 当请求成功后
+    if (res.data.status === 0) {
+      // 保存课程数据
+      this.setData({
+        courses: res.data.message
+      })
+    }
+  },
+  // 获取热门视频数据
+  async getVideoData() {
+    // 发送请求，获取热门视频数据
+    let res = await request({ url: 'home/video' });
+    // 当请求成功后
+    if (res.data.status === 0) {
+      // 保存课程数据
+      this.setData({
+        videos: res.data.message
+      })
+    }
   }
 })
