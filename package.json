@@ -1,0 +1,23 @@
+{
+  "name": "wx-demo",
+  "version": "1.0.0",
+  "description": "\"# mushroom\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zsj-Jane/mushroom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zsj-Jane/mushroom/issues"
+  },
+  "homepage": "https://github.com/zsj-Jane/mushroom#readme",
+  "dependencies": {
+    "@vant/weapp": "^1.2.0"
+  }
+}

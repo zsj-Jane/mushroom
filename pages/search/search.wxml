@@ -7,7 +7,9 @@
 		<text bindtap="cancel" hidden="{{!isFocus}}" class="search-button">取消</text>
 	</view> -->
 	<!-- 导入weui-wxss的searchbar -->
-  <include src="./searchbar/weui-searchbar.wxml" />
+	<!-- <include src="./searchbar/weui-searchbar.wxml" /> -->
+	<!-- 导入vant-weapp的search -->
+	<van-search bind:change="changeValue" bind:search="search" value="{{ keyword }}" shape="round" background="#ffffff" placeholder="请输入搜索关键词" />
 	<view class="search-body">
 		<view class="empty">
 			<text class="title">暂无内容哦~</text>

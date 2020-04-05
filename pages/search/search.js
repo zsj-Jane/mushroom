@@ -31,7 +31,7 @@ Page({
       keyword: ''
     })
   },*/
-  // 导入weui-wxss中searchbar的js文件内容
+  /*// 导入weui-wxss中searchbar的js文件内容
   data: {
     inputShowed: false,
     inputVal: ""
@@ -56,6 +56,17 @@ Page({
     this.setData({
       inputVal: e.detail.value
     });
+  },*/
+  // 导入vant-weapp
+  data: {
+    keyword: ''
+  },
+  // 双向绑定数据：输入框值改变
+  changeValue(e) {
+    // 保存输入框的值
+    this.setData({
+      keyword: e.detail
+    })
   },
   // 输入框搜索事件
   search() {
