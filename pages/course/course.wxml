@@ -1,2 +1,4 @@
 <!--pages/course/course.wxml-->
-<text>pages/course/course.wxml</text>
+<view>
+	<course-list courses="{{courses}}" />
+</view>
