@@ -4,7 +4,7 @@
 	<search-bar placeholder="请输入课程的名称"></search-bar>
 	<!-- 轮播图 -->
 	<swiper indicator-dots autoplay circular interval="{{5000}}" duration="{{1000}}">
-		<block wx:for="{{swipers}}" wx:key="*this">
+		<block wx:for="{{swipers}}" wx:key="id">
 			<!-- 声明式导航：跳转到课程详情页面 -->
 			<navigator url="/pages/course-detail/course-detail?id={{item.course_id}}">
 				<swiper-item>
@@ -19,12 +19,12 @@
 			<view class="tip">推荐课程</view>
 			<!-- 声明式导航：跳转到课程页面 -->
 			<!-- <navigator url="/pages/course/course" open-type="switchTab"> -->
-				<image bindtap="switchCourse" src="/assets/images/arrow@2x.png"></image>
+			<image bindtap="switchCourse" src="/assets/images/arrow@2x.png"></image>
 			<!-- </navigator> -->
 		</view>
 		<scroll-view class="course-container" scroll-x>
 			<!-- 声明式导航：跳转到课程详情页面 -->
-			<navigator url="/pages/course-detail/course-detail?id={{item.relation_id}}" class="course-item" wx:for="{{courses}}" wx:key="*this">
+			<navigator url="/pages/course-detail/course-detail?id={{item.relation_id}}" class="course-item" wx:for="{{courses}}" wx:key="id">
 				<image src="{{item.icon}}"></image>
 			</navigator>
 		</scroll-view>
@@ -32,11 +32,11 @@
 	<!-- 热门视频 -->
 	<view>
 		<view class="tips">
-			<view class="tip">推荐课程</view>
+			<view class="tip">热门视频</view>
 			<image src="/assets/images/arrow@2x.png"></image>
 		</view>
 		<view class="hot-video">
-			<view class="video-item" wx:for="{{videos}}" wx:key="*this">
+			<view class="video-item" wx:for="{{videos}}" wx:key="id">
 				<image src="{{item.cover_photo_url}}"></image>
 				<text class="title">{{item.name}}</text>
 				<text class="subtitle">{{item.view_count}}人已观看</text>
