@@ -62,5 +62,11 @@ Page({
         videos: res.data.message
       })
     }
+  },
+  // 跳转到课程页面，编程式导航
+  switchCourse() {
+    wx.switchTab({
+      url: '/pages/course/course',
+    })
   }
 })
