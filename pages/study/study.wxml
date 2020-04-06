@@ -12,9 +12,11 @@
 			</view>
 			<view class="circle">
 				<!-- 使用vant的circle -->
-				<van-circle value="{{ item.study_progress }}" size="54" color="{{item.color}}" layer-color="#f3f3f3">
+				<!-- <van-circle value="{{ item.study_progress }}" size="54" color="{{item.color}}" layer-color="#f3f3f3">
 					<text style="font-size:10px;font-weight:bold;color:{{item.color}}" >{{item.study_progress}}%</text>
-				</van-circle>
+				</van-circle> -->
+        <!-- 进度子组件 -->
+				<circle canvasId="{{item.sid}}" width="{{55}}" height="{{55}}" foregroundColor="{{item.color}}" progress="{{item.study_progress}}" />
 			</view>
 		</view>
 	</block>
