@@ -61,8 +61,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "搜索页面",
-					"pathName": "pages/search/search",
+					"name": "我的页面",
+					"pathName": "pages/my/my",
 					"query": "",
 					"scene": null
 				}
