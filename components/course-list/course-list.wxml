@@ -1,0 +1,11 @@
+<!--components/course-list/course-list.wxml-->
+<view class="course-container">
+	<view wx:for="{{courses}}" class="course-item">
+		<image src="{{item.icon}}"></image>
+		<text class="title">{{item.title}}</text>
+		<text class="subtitle">{{item.subtitle}}</text>
+    <view class="level" wx:if="{{item.level===1}}">初级</view>
+    <view class="level" wx:elif="{{item.level===2}}">中级</view>
+    <view class="level" wx:else>高级</view>
+	</view>
+</view>

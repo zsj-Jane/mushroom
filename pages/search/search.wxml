@@ -11,9 +11,14 @@
 	<!-- 导入vant-weapp的search -->
 	<van-search bind:change="changeValue" bind:search="search" value="{{ keyword }}" shape="round" background="#ffffff" placeholder="请输入搜索关键词" />
 	<view class="search-body">
-		<view class="empty">
-			<text class="title">暂无内容哦~</text>
-		</view>
-
+		<block wx:if="{{courses.length===0}}">
+			<view class="empty">
+				<text class="title">暂无内容哦~</text>
+			</view>
+		</block>
+		<block wx:else>
+			<!-- 课程列表组件 -->
+			<course-list courses="{{courses}}" />
+		</block>
 	</view>
 </view>

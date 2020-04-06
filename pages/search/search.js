@@ -1,4 +1,6 @@
 // pages/search/search.js
+// 导入请求方法
+import request from '../../utils/request';
 Page({
 
   /**
@@ -59,7 +61,10 @@ Page({
   },*/
   // 导入vant-weapp
   data: {
-    keyword: ''
+    // 搜索关键字
+    keyword: '',
+    // 课程
+    courses: []
   },
   // 双向绑定数据：输入框值改变
   changeValue(e) {
@@ -69,7 +74,20 @@ Page({
     })
   },
   // 输入框搜索事件
-  search() {
-
+  async search() {
+    // 发送请求，根据关键字查询课程列表
+    const res = await request({
+      url: 'course/search',
+      data: {
+        name: this.data.keyword
+      }
+    });
+    // 当成功发送请求后
+    if (res.data.status === 0) {
+      // 保存课程数据
+      this.setData({
+        courses: res.data.message
+      })
+    }
   },
 })

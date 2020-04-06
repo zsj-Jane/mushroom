@@ -6,9 +6,9 @@
 }
 
 /* 导入weui-wxss的searchbar的样式 */
-@import "./searchbar/weui-searchbar.wxss";
+/* @import "./searchbar/weui-searchbar.wxss"; */
 
-/*
+/*自己写的
 .search-head {
   padding: 30rpx 0;
   background-color: #fff;
