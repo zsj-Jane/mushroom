@@ -61,8 +61,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "我的页面",
-					"pathName": "pages/my/my",
+					"name": "学习页面",
+					"pathName": "pages/study/study",
 					"query": "",
 					"scene": null
 				}
